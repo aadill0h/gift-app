@@ -1,8 +1,13 @@
 from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import ListView,DetailView,CreateView,UpdateView ,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import FriendGroups,UserProfile
+from .models import FriendGroups,UserProfile,Gift
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
+
+
 
 class UserFriendGroupsView(LoginRequiredMixin, ListView):
     model = FriendGroups
@@ -26,5 +31,18 @@ class FriendGroup_DetailView(LoginRequiredMixin, DetailView):
          context['members'] = members
          return context
     
+class wishlist(ListView):
+    model =Gift
+    template_name = 'wishlist.html'
+    context_object_name = 'gifts'
 
+    def get_queryset(self):
+        user_id = self.kwargs['user_id']
+        user =get_object_or_404(User,id=user_id)
+        return Gift.objects.filter(user=user)
+    
+
+
+
+    
 

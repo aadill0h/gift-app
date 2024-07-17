@@ -1,0 +1,14 @@
+<!-- user_gift_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Gifts</title>
+</head>
+<body>
+    <ul>
+        {% for gift in gifts %}
+            <li>{{ gift.name }} - {{ gift.description }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
