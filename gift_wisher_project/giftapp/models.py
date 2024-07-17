@@ -51,7 +51,7 @@ class UserProfile(models.Model):
 class Membership(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     friend_group = models.ForeignKey(FriendGroups, on_delete=models.CASCADE)
-    is_member = models.BooleanField(default=False)
+    is_member = models.BooleanField(default=True)
 
     class Meta:
         unique_together = ('user', 'friend_group')  # Ensure unique memberships

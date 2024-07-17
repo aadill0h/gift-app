@@ -1,0 +1,18 @@
+<!-- user_friend_groups.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Friend Groups</title>
+</head>
+<body>
+    <h1> {{friend_group.name }}</h1>
+    <p>Group Code : friend_group.group_code</p>
+    <h2> Members</h2>
+    <ul>
+        {% for member in members %}
+            <li><a href="#">{{ member.user.username }}</a></li>
+        {% endfor %}
+    </ul>
+    
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!-- user_friend_groups.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Friend Groups</title>
+</head>
+<body>
+    <h1>Your Friend Groups</h1>
+    <ul>
+    {% for group in friend_groups %}
+        <li>{{ group.name }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

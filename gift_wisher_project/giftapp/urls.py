@@ -1,0 +1,9 @@
+from django.urls import path
+from .views import UserFriendGroupsView,FriendGroup_DetailView
+
+
+urlpatterns = [
+    path('friend_groups/',UserFriendGroupsView.as_view(), name ='friend-group-list'),
+    path('friend_groups/<int:pk>/',FriendGroup_DetailView.as_view(), name ='friend-group-detail'),
+  
+]
