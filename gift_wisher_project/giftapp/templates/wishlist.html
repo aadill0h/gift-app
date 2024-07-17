@@ -2,9 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>User Gifts</title>
+    <title>Wishlist</title>
 </head>
 <body>
+    <h1>Wishlist</h1>
+    <h2>{{ user.username }}</h2>
     <ul>
         {% for gift in gifts %}
             <li>{{ gift.name }} - {{ gift.description }}</li>

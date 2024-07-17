@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+fieldset {
+  background-color: #eeeeee;
+}
+
+legend {
+  background-color: gray;
+  color: white;
+  padding: 5px 10px;
+}
+
+input {
+  margin: 5px;
+}
+</style>
+</head>
+<body>
+
+<!-- CSRF token ensures security for POST requests -->
+<form method="POST">
+  {% csrf_token %}
+  <fieldset>
+    <legend>Register</legend>
+    <!-- Loop through form fields and render them -->
+    {{ form.as_p }}
+  </fieldset>
+  <!-- Add a submit button to submit the form -->
+  <button type="submit">Register</button>
+</form>
+
+</body>
+</html>

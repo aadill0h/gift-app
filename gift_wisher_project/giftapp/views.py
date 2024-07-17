@@ -41,7 +41,11 @@ class wishlist(ListView):
         user =get_object_or_404(User,id=user_id)
         return Gift.objects.filter(user=user)
     
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)  # Get the default context
+        user_id = self.kwargs['user_id']
+        context['user'] = get_object_or_404(User, id=user_id)  # Add the user to the context
+        return context
 
 
     
