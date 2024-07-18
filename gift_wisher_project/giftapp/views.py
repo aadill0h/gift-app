@@ -1,11 +1,13 @@
 from typing import Any
 from django.db.models.query import QuerySet
-from django.shortcuts import render
+from django.shortcuts import render, redirect,get_object_or_404
 from django.views.generic import ListView,DetailView,CreateView,UpdateView ,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import FriendGroups,UserProfile,Gift
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404
+from .forms import UserRegisterForm
+from django.contrib import messages
+
 
 
 
@@ -47,6 +49,20 @@ class wishlist(ListView):
         context['user'] = get_object_or_404(User, id=user_id)  # Add the user to the context
         return context
 
-
+def register(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f"Your account has been created! You are now able to login{username}")
+            return redirect('login')
+    else:
+        form = UserRegisterForm()
+    return render(request, 'giftapp/register.html', {'form': form})
     
-
+class UserProfileView(DetailView):
+    model = UserProfile
+    template_name = 'user_profile_view.html'
+    context_object_name = 'userprofile'
+    

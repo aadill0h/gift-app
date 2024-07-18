@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+</head>
+<body>
+    <h1>{{ userprofile.user }}</h1>
+    <p>Group Code: {{ userprofile.user_code }}</p>
+    <p>About: {{ userprofile.description }}</p>
+
+    <a href="{% url 'friend-group-list' %}">Friend Groups</a>
+    <br>
+    <a href="{% url 'wishlist' userprofile.user.id %}">Wishlist</a>
+</body>
+</html>
