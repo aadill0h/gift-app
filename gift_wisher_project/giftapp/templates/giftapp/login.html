@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Friend Groups</title>
+</head>
+<body>
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset >
+                <legend>Log In</legend>
+                {{ form.as_p }}
+            </fieldset>
+            <div >
+                <button type="submit">Sign In</button>
+            </div>
+        </form>
+        <div >
+            <small>
+                Need an account?<a  href="{% url 'register-user' %}">Sign Up Now</a>
+            </small>
+        </div>
+    </div>
+</body>
+</html>

@@ -13,7 +13,7 @@ from django.contrib import messages
 
 class UserFriendGroupsView(LoginRequiredMixin, ListView):
     model = FriendGroups
-    template_name = 'user_friend_groups.html'
+    template_name = 'giftapp/user_friend_groups.html'
     context_object_name = 'friend_groups'
 
     def get_queryset(self):
@@ -22,7 +22,7 @@ class UserFriendGroupsView(LoginRequiredMixin, ListView):
 
 class FriendGroup_DetailView(LoginRequiredMixin, DetailView):
     model = FriendGroups
-    template_name='friend_groups_desc.html'
+    template_name='giftapp/friend_groups_desc.html'
     context_object_name='friend_group_desc'
     
     def get_context_data(self, **kwargs):
@@ -35,7 +35,7 @@ class FriendGroup_DetailView(LoginRequiredMixin, DetailView):
     
 class wishlist(ListView):
     model =Gift
-    template_name = 'wishlist.html'
+    template_name = 'giftapp/wishlist.html'
     context_object_name = 'gifts'
 
     def get_queryset(self):
@@ -63,6 +63,9 @@ def register(request):
     
 class UserProfileView(DetailView):
     model = UserProfile
-    template_name = 'user_profile_view.html'
+    template_name = 'giftapp/user_profile_view.html'
     context_object_name = 'userprofile'
     
+def Homeview(request):
+    return render(request, 'giftapp/home.html')
+
